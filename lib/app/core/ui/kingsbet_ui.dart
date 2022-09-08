@@ -6,6 +6,9 @@ class KingsbetUI {
   static final ThemeData theme = ThemeData(
     primaryColor: const Color(0xFFA40734),
     primaryColorDark: const Color(0xFF360411),
+    appBarTheme: const AppBarTheme(
+      backgroundColor: Color(0xFFA40734),
+    ),
     fontFamily: "Uncial Antiqua",
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
