@@ -80,7 +80,9 @@ class SigninPage extends StatelessWidget {
                     ),
                   ),
                   TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Get.offNamed('/auth/signup');
+                    },
                     child: const Text(
                       "clique aqui",
                     ),
