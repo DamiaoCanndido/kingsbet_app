@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 import 'package:kingsbet_app/app/core/ui/kingsbet_ui.dart';
+import 'package:kingsbet_app/app/routes/auth_routers.dart';
 import 'package:kingsbet_app/app/routes/splash_routers.dart';
 
 void main() {
@@ -18,6 +19,7 @@ class KingsbetMainApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       getPages: [
         ...SplashRouters.routers,
+        ...AuthRouters.routers,
       ],
     );
   }

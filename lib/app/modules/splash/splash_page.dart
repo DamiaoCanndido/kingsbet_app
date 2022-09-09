@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:kingsbet_app/app/core/ui/widgets/kingsbet_button.dart';
 
 class SplashPage extends StatelessWidget {
@@ -31,7 +32,9 @@ class SplashPage extends StatelessWidget {
             Align(
               child: KingsbetButton(
                 label: "Próximo",
-                onPressed: () {},
+                onPressed: () {
+                  Get.toNamed('/auth/signin');
+                },
               ),
             ),
           ],
