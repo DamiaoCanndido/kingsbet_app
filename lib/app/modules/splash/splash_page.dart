@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:kingsbet_app/app/core/ui/widgets/kingsbet_appbar.dart';
 import 'package:kingsbet_app/app/core/ui/widgets/kingsbet_button.dart';
-import 'package:kingsbet_app/app/core/ui/widgets/kingsbet_textformfield.dart';
 
 class SplashPage extends StatelessWidget {
   const SplashPage({super.key});
@@ -9,31 +7,33 @@ class SplashPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: KingsbetAppBar(
-        title: const Text(
-          "KINGSBET",
-        ),
-        elevation: 0,
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(16),
+      body: Container(
+        color: const Color(0xFFA40734),
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const KingsbetTextFormField(
-              label: "Email",
-              textAlign: TextAlign.left,
-              keyboardType: TextInputType.emailAddress,
-              obscureText: false,
-              enabled: true,
+            Align(
+              alignment: Alignment.center,
+              child: Image.asset(
+                "assets/images/qatar_wc.png",
+                width: MediaQuery.of(context).size.width / 2,
+              ),
             ),
-            const SizedBox(
-              height: 20,
+            const Align(
+              child: Text(
+                "KING´SBET",
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 30,
+                ),
+              ),
             ),
-            KingsbetButton(
-              label: "ENTRAR",
-              width: double.infinity,
-              onPressed: () {},
-            )
+            Align(
+              child: KingsbetButton(
+                label: "Próximo",
+                onPressed: () {},
+              ),
+            ),
           ],
         ),
       ),
