@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 import '../modules/signin/signin_page.dart';
+import '../modules/signup/signup_binding.dart';
 import '../modules/signup/signup_page.dart';
 
 class AuthRouters {
@@ -9,6 +10,7 @@ class AuthRouters {
     GetPage(
       name: '/auth/signup',
       page: () => const SignupPage(),
+      binding: SignupBinding(),
     ),
     GetPage(
       name: '/auth/signin',

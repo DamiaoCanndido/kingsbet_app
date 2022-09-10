@@ -6,7 +6,8 @@ import 'auth_repository.dart';
 class AuthRepositoryImpl implements AuthRepository {
   final RestClient _restClient;
 
-  AuthRepositoryImpl(RestClient restClient) : _restClient = restClient;
+  AuthRepositoryImpl({required RestClient restClient})
+      : _restClient = restClient;
 
   @override
   Future<UserModel> signup(
