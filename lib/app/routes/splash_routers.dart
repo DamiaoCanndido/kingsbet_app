@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:kingsbet_app/app/modules/splash/splash_binding.dart';
 import 'package:kingsbet_app/app/modules/splash/splash_page.dart';
 
 class SplashRouters {
@@ -8,6 +9,7 @@ class SplashRouters {
     GetPage(
       name: '/',
       page: () => const SplashPage(),
+      binding: SplashBinding(),
     )
   ];
 }

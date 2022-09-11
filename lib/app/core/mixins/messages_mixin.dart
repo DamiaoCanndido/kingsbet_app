@@ -9,9 +9,11 @@ mixin MessagesMixin on GetxController {
           model.title,
           model.message,
           backgroundColor: model.type.snackColor(),
+          snackPosition: SnackPosition.BOTTOM,
+          isDismissible: true,
           colorText: model.type.textColor(),
           margin: const EdgeInsets.all(20),
-          duration: const Duration(seconds: 3),
+          duration: const Duration(seconds: 2),
           mainButton: TextButton(
             onPressed: () {
               Get.back();

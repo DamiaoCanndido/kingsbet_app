@@ -29,14 +29,6 @@ class SplashPage extends StatelessWidget {
                 ),
               ),
             ),
-            Align(
-              child: KingsbetButton(
-                label: "Próximo",
-                onPressed: () {
-                  Get.toNamed('/auth/signin');
-                },
-              ),
-            ),
           ],
         ),
       ),

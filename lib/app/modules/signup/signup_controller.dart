@@ -1,12 +1,10 @@
 import 'dart:developer';
 import 'package:get/get.dart';
-import 'package:kingsbet_app/app/core/mixins/loader_mixin.dart';
 import 'package:kingsbet_app/app/core/mixins/messages_mixin.dart';
 import 'package:kingsbet_app/app/core/rest_client/rest_client.dart';
 import 'package:kingsbet_app/app/repositories/auth/auth_repository.dart';
 
-class SignupController extends GetxController with LoaderMixin, MessagesMixin {
-  // ignore: unused_field
+class SignupController extends GetxController with MessagesMixin {
   final AuthRepository _authRepository;
 
   final _loading = false.obs;
@@ -20,7 +18,6 @@ class SignupController extends GetxController with LoaderMixin, MessagesMixin {
 
   @override
   void onInit() {
-    loaderListener(_loading);
     messageListener(_message);
     super.onInit();
   }
@@ -74,9 +71,9 @@ class SignupController extends GetxController with LoaderMixin, MessagesMixin {
     required String cPw,
   }) async {
     try {
-      _loading(true);
+      _loading.toggle();
       await _authRepository.signup(name, email, pw, cPw);
-      _loading(false);
+      _loading.toggle();
       // TODO: voltar no login
       _message(
         MessageModel(
@@ -86,7 +83,7 @@ class SignupController extends GetxController with LoaderMixin, MessagesMixin {
         ),
       );
     } on RestClientException catch (e, s) {
-      _loading(false);
+      _loading.toggle();
       log("Erro ao criar conta", error: e, stackTrace: s);
       if (_loading.isFalse) {
         _message(
@@ -98,7 +95,7 @@ class SignupController extends GetxController with LoaderMixin, MessagesMixin {
         );
       }
     } catch (e, s) {
-      _loading(false);
+      _loading.toggle();
       log("Erro ao criar conta", error: e, stackTrace: s);
       if (_loading.isFalse) {
         _message(
