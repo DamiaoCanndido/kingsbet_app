@@ -19,4 +19,32 @@ class SignupController extends GetxController with LoaderMixin, MessagesMixin {
     messageListener(message);
     super.onInit();
   }
+
+  String? validateName(String? value) {
+    if (value == null || value.length < 4 || value.isEmpty) {
+      return "Nome muito curto.";
+    }
+    return null;
+  }
+
+  String? validateEmail(String? value) {
+    if (value == null || value.length < 4 || value.isEmpty) {
+      return "Nome muito curto.";
+    }
+    return null;
+  }
+
+  String? validatePassword(String? value) {
+    if (value == null || value.length < 4 || value.isEmpty) {
+      return "Nome muito curto.";
+    }
+    return null;
+  }
+
+  String? validateConfirmPassword(String? value) {
+    if (value == null || value.length < 4 || value.isEmpty) {
+      return "Nome muito curto.";
+    }
+    return null;
+  }
 }
