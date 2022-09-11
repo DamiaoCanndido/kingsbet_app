@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:kingsbet_app/app/core/ui/widgets/kingsbet_button.dart';
 
 class SplashPage extends StatelessWidget {
   const SplashPage({super.key});

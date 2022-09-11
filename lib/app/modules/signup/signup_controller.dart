@@ -1,10 +1,11 @@
 import 'dart:developer';
 import 'package:get/get.dart';
+import 'package:kingsbet_app/app/core/mixins/loader_mixin.dart';
 import 'package:kingsbet_app/app/core/mixins/messages_mixin.dart';
 import 'package:kingsbet_app/app/core/rest_client/rest_client.dart';
 import 'package:kingsbet_app/app/repositories/auth/auth_repository.dart';
 
-class SignupController extends GetxController with MessagesMixin {
+class SignupController extends GetxController with MessagesMixin, LoaderMixin {
   final AuthRepository _authRepository;
 
   final _loading = false.obs;
@@ -19,6 +20,7 @@ class SignupController extends GetxController with MessagesMixin {
   @override
   void onInit() {
     messageListener(_message);
+    loaderListener(_loading);
     super.onInit();
   }
 
@@ -75,6 +77,7 @@ class SignupController extends GetxController with MessagesMixin {
       await _authRepository.signup(name, email, pw, cPw);
       _loading.toggle();
       // TODO: voltar no login
+
       _message(
         MessageModel(
           title: "Sucesso",
@@ -85,27 +88,25 @@ class SignupController extends GetxController with MessagesMixin {
     } on RestClientException catch (e, s) {
       _loading.toggle();
       log("Erro ao criar conta", error: e, stackTrace: s);
-      if (_loading.isFalse) {
-        _message(
-          MessageModel(
-            title: "Erro",
-            message: e.message,
-            type: MessageType.error,
-          ),
-        );
-      }
+
+      _message(
+        MessageModel(
+          title: "Erro",
+          message: e.message,
+          type: MessageType.error,
+        ),
+      );
     } catch (e, s) {
       _loading.toggle();
       log("Erro ao criar conta", error: e, stackTrace: s);
-      if (_loading.isFalse) {
-        _message(
-          MessageModel(
-            title: "Erro",
-            message: "Erro ao criar conta",
-            type: MessageType.error,
-          ),
-        );
-      }
+
+      _message(
+        MessageModel(
+          title: "Erro",
+          message: "Erro ao criar conta",
+          type: MessageType.error,
+        ),
+      );
     }
   }
 }
