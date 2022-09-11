@@ -9,6 +9,7 @@ class SignupController extends GetxController with LoaderMixin, MessagesMixin {
 
   final loading = false.obs;
   final message = Rxn<MessageModel>();
+  final password = "".obs;
 
   SignupController({required AuthRepository authRepository})
       : _authRepository = authRepository;
@@ -21,29 +22,39 @@ class SignupController extends GetxController with LoaderMixin, MessagesMixin {
   }
 
   String? validateName(String? value) {
-    if (value == null || value.length < 4 || value.isEmpty) {
+    String v = value!.trim();
+    if (v.length < 4 || v.isEmpty) {
       return "Nome muito curto.";
     }
     return null;
   }
 
   String? validateEmail(String? value) {
-    if (value == null || value.length < 4 || value.isEmpty) {
-      return "Nome muito curto.";
+    String v = value!.trim();
+    if (!RegExp(
+            r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+        .hasMatch(v)) {
+      return "Email inválido.";
     }
     return null;
   }
 
   String? validatePassword(String? value) {
-    if (value == null || value.length < 4 || value.isEmpty) {
-      return "Nome muito curto.";
+    String v = value!.trim();
+    password(v);
+    if (v.length < 6 || v.isEmpty) {
+      return "Senha muito curta";
     }
     return null;
   }
 
   String? validateConfirmPassword(String? value) {
-    if (value == null || value.length < 4 || value.isEmpty) {
-      return "Nome muito curto.";
+    String v = value!.trim();
+    if (v.length < 6 || v.isEmpty) {
+      return "Senha muito curta";
+    }
+    if (v != password.value) {
+      return "Senhas diferentes.";
     }
     return null;
   }

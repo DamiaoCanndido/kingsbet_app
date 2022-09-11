@@ -33,7 +33,6 @@ class _SignupPageState extends State<SignupPage> {
         physics: const BouncingScrollPhysics(),
         child: Form(
           key: _formKey,
-          autovalidateMode: AutovalidateMode.always,
           child: Padding(
             padding: const EdgeInsets.all(8),
             child: Column(
