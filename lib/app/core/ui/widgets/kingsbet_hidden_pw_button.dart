@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-class DcaScanHiddenPWButton extends StatelessWidget {
+class KingsbetHiddenPWButton extends StatelessWidget {
   final double radius;
   final IconData iconData;
   final VoidCallback onTap;
 
-  const DcaScanHiddenPWButton({
+  const KingsbetHiddenPWButton({
     super.key,
     required this.radius,
     required this.iconData,

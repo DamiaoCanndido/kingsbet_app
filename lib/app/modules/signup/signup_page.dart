@@ -5,6 +5,8 @@ import 'package:kingsbet_app/app/core/ui/widgets/kingsbet_button.dart';
 import 'package:kingsbet_app/app/core/ui/widgets/kingsbet_textformfield.dart';
 import 'package:kingsbet_app/app/modules/signup/signup_controller.dart';
 
+import '../../core/ui/widgets/kingsbet_hidden_pw_button.dart';
+
 class SignupPage extends StatefulWidget {
   const SignupPage({super.key});
 
@@ -90,42 +92,60 @@ class _SignupPageState extends State<SignupPage> {
                 const SizedBox(
                   height: 20,
                 ),
-                KingsbetTextFormField(
-                  label: "Senha",
-                  controller: _passwordEC,
-                  validator: (value) {
-                    return controller.validatePassword(value);
-                  },
-                  textAlign: TextAlign.start,
-                  keyboardType: TextInputType.text,
-                  obscureText: false,
-                  enabled: true,
-                  prefix: const Padding(
-                    padding: EdgeInsets.only(right: 8),
-                    child: Icon(
-                      Icons.lock,
-                      size: 25,
+                Obx(
+                  () => KingsbetTextFormField(
+                    label: "Senha",
+                    controller: _passwordEC,
+                    validator: (value) {
+                      return controller.validatePassword(value);
+                    },
+                    textAlign: TextAlign.start,
+                    keyboardType: TextInputType.text,
+                    obscureText: !controller.visiblePassword.value,
+                    enabled: true,
+                    prefix: const Padding(
+                      padding: EdgeInsets.only(right: 8),
+                      child: Icon(
+                        Icons.lock,
+                        size: 25,
+                      ),
+                    ),
+                    suffix: KingsbetHiddenPWButton(
+                      iconData: controller.visiblePassword.value
+                          ? Icons.visibility_off
+                          : Icons.visibility,
+                      radius: 32,
+                      onTap: controller.setVisiblePassword,
                     ),
                   ),
                 ),
                 const SizedBox(
                   height: 20,
                 ),
-                KingsbetTextFormField(
-                  label: "Confirme senha",
-                  controller: _confirmPasswordEC,
-                  validator: (value) {
-                    return controller.validateConfirmPassword(value);
-                  },
-                  textAlign: TextAlign.start,
-                  keyboardType: TextInputType.text,
-                  obscureText: false,
-                  enabled: true,
-                  prefix: const Padding(
-                    padding: EdgeInsets.only(right: 8),
-                    child: Icon(
-                      Icons.lock,
-                      size: 25,
+                Obx(
+                  () => KingsbetTextFormField(
+                    label: "Confirme senha",
+                    controller: _confirmPasswordEC,
+                    validator: (value) {
+                      return controller.validateConfirmPassword(value);
+                    },
+                    textAlign: TextAlign.start,
+                    keyboardType: TextInputType.text,
+                    obscureText: !controller.visibleConfirmPassword.value,
+                    enabled: true,
+                    prefix: const Padding(
+                      padding: EdgeInsets.only(right: 8),
+                      child: Icon(
+                        Icons.lock,
+                        size: 25,
+                      ),
+                    ),
+                    suffix: KingsbetHiddenPWButton(
+                      iconData: controller.visibleConfirmPassword.value
+                          ? Icons.visibility_off
+                          : Icons.visibility,
+                      radius: 32,
+                      onTap: controller.setVisibleConfirmPassword,
                     ),
                   ),
                 ),
@@ -137,7 +157,12 @@ class _SignupPageState extends State<SignupPage> {
                   onPressed: () {
                     final formState = _formKey.currentState!.validate();
                     if (formState) {
-                      print("PASS");
+                      controller.signUp(
+                        name: _nameEC.text,
+                        email: _emailEC.text,
+                        pw: _passwordEC.text,
+                        cPw: _confirmPasswordEC.text,
+                      );
                     }
                   },
                   width: double.infinity,
@@ -167,5 +192,14 @@ class _SignupPageState extends State<SignupPage> {
         ),
       ),
     );
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _nameEC.dispose();
+    _emailEC.dispose();
+    _passwordEC.dispose();
+    _confirmPasswordEC.dispose();
   }
 }
