@@ -1,4 +1,5 @@
 import 'dart:developer';
+import 'package:kingsbet_app/app/core/constants/constants.dart';
 import 'package:kingsbet_app/app/core/rest_client/rest_client.dart';
 import 'package:kingsbet_app/app/models/user_model.dart';
 import 'auth_repository.dart';
@@ -16,7 +17,7 @@ class AuthRepositoryImpl implements AuthRepository {
     String password,
     String confirmPassword,
   ) async {
-    final response = await _restClient.post('/auth/signup', {
+    final response = await _restClient.post(Constants.SIGNUP, {
       "name": name,
       "email": email,
       "password": password,
@@ -40,7 +41,7 @@ class AuthRepositoryImpl implements AuthRepository {
 
   @override
   Future<UserModel> signin(String email, String password) async {
-    final response = await _restClient.post('/auth/signin', {
+    final response = await _restClient.post(Constants.SIGNIN, {
       "email": email,
       "password": password,
     });

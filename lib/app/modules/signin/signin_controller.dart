@@ -1,9 +1,13 @@
 import 'dart:developer';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
+import 'package:kingsbet_app/app/core/constants/constants.dart';
 import 'package:kingsbet_app/app/core/mixins/loader_mixin.dart';
 import 'package:kingsbet_app/app/core/mixins/messages_mixin.dart';
 import 'package:kingsbet_app/app/core/rest_client/rest_client.dart';
 import 'package:kingsbet_app/app/repositories/auth/auth_repository.dart';
+
+import '../../models/user_model.dart';
 
 class SigninController extends GetxController with MessagesMixin, LoaderMixin {
   final AuthRepository _authRepository;
@@ -50,9 +54,14 @@ class SigninController extends GetxController with MessagesMixin, LoaderMixin {
   }) async {
     try {
       _loading.toggle();
-      await _authRepository.signin(email, pw);
-      _loading.toggle();
+
+      final userLogged = await _authRepository.signin(email, pw);
+
       // TODO: voltar no login
+      final storage = GetStorage();
+      storage.write(Constants.USER_TOKEN, userLogged.accessToken);
+
+      _loading.toggle();
 
       _message(
         MessageModel(

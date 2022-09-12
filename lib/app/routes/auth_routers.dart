@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:kingsbet_app/app/core/constants/constants.dart';
 import 'package:kingsbet_app/app/modules/signin/signin_binding.dart';
 import '../modules/signin/signin_page.dart';
 import '../modules/signup/signup_binding.dart';
@@ -9,12 +10,12 @@ class AuthRouters {
 
   static final routers = <GetPage>[
     GetPage(
-      name: '/auth/signup',
+      name: Constants.SIGNUP,
       page: () => const SignupPage(),
       binding: SignupBinding(),
     ),
     GetPage(
-      name: '/auth/signin',
+      name: Constants.SIGNIN,
       page: () => const SigninPage(),
       binding: SigninBinding(),
     )

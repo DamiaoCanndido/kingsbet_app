@@ -57,6 +57,6 @@ class UserModel {
 
   @override
   String toString() {
-    return 'Nome: $name, Access: $accessToken';
+    return 'name: $name, email: $email, access_token: $accessToken';
   }
 }
