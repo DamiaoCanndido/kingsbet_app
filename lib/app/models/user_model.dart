@@ -10,8 +10,8 @@ String userToJson(UserModel data) => json.encode(data.toMap());
 
 class UserModel {
   String? id;
-  DateTime? createdAt;
-  DateTime? updatedAt;
+  // DateTime? createdAt;
+  // DateTime? updatedAt;
   String name;
   String email;
   String? password;
@@ -21,8 +21,8 @@ class UserModel {
 
   UserModel({
     this.id,
-    this.createdAt,
-    this.updatedAt,
+    // this.createdAt,
+    // this.updatedAt,
     required this.name,
     required this.email,
     this.password,
@@ -33,8 +33,8 @@ class UserModel {
 
   factory UserModel.fromMap(Map<String, dynamic> json) => UserModel(
         id: json["id"],
-        createdAt: DateTime.parse(json["createdAt"]),
-        updatedAt: DateTime.parse(json["updatedAt"]),
+        // createdAt: DateTime.parse(json["createdAt"]),
+        // updatedAt: DateTime.parse(json["updatedAt"]),
         name: json["name"],
         email: json["email"],
         password: json["password"],
@@ -45,8 +45,8 @@ class UserModel {
 
   Map<String, dynamic> toMap() => {
         "id": id,
-        "createdAt": createdAt?.toIso8601String(),
-        "updatedAt": updatedAt?.toIso8601String(),
+        // "createdAt": createdAt?.toIso8601String(),
+        // "updatedAt": updatedAt?.toIso8601String(),
         "name": name,
         "email": email,
         "password": password,
@@ -54,4 +54,9 @@ class UserModel {
         "access_token": accessToken,
         "isAdmin": isAdmin,
       };
+
+  @override
+  String toString() {
+    return 'Nome: $name, Access: $accessToken';
+  }
 }

@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:kingsbet_app/app/modules/signin/signin_binding.dart';
 import '../modules/signin/signin_page.dart';
 import '../modules/signup/signup_binding.dart';
 import '../modules/signup/signup_page.dart';
@@ -15,6 +16,7 @@ class AuthRouters {
     GetPage(
       name: '/auth/signin',
       page: () => const SigninPage(),
+      binding: SigninBinding(),
     )
   ];
 }
