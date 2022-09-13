@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:kingsbet_app/app/core/constants/constants.dart';
 import 'package:kingsbet_app/app/core/ui/widgets/kingsbet_appbar.dart';
 import 'package:kingsbet_app/app/core/ui/widgets/kingsbet_button.dart';
 import 'package:kingsbet_app/app/core/ui/widgets/kingsbet_textformfield.dart';
@@ -178,7 +179,7 @@ class _SignupPageState extends State<SignupPage> {
                     ),
                     TextButton(
                       onPressed: () {
-                        Get.offNamed('/auth/signin');
+                        Get.offNamed(Constants.SIGNIN);
                       },
                       child: const Text(
                         "clique aqui",

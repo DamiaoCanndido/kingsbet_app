@@ -7,8 +7,6 @@ import 'package:kingsbet_app/app/core/mixins/messages_mixin.dart';
 import 'package:kingsbet_app/app/core/rest_client/rest_client.dart';
 import 'package:kingsbet_app/app/repositories/auth/auth_repository.dart';
 
-import '../../models/user_model.dart';
-
 class SigninController extends GetxController with MessagesMixin, LoaderMixin {
   final AuthRepository _authRepository;
 
@@ -56,20 +54,11 @@ class SigninController extends GetxController with MessagesMixin, LoaderMixin {
       _loading.toggle();
 
       final userLogged = await _authRepository.signin(email, pw);
-
-      // TODO: voltar no login
       final storage = GetStorage();
+
       storage.write(Constants.USER_TOKEN, userLogged.accessToken);
 
       _loading.toggle();
-
-      _message(
-        MessageModel(
-          title: "Sucesso",
-          message: "Bem-Vindo",
-          type: MessageType.info,
-        ),
-      );
     } on RestClientException catch (e, s) {
       _loading.toggle();
       log("Credenciais inválidas", error: e, stackTrace: s);

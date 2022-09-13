@@ -6,4 +6,5 @@ class Constants {
   static const String SPLASH = "/";
   static const String SIGNUP = "/auth/signup";
   static const String SIGNIN = "/auth/signin";
+  static const String HOME = "/home";
 }
