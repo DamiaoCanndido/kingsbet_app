@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:kingsbet_app/app/core/ui/widgets/kingsbet_button.dart';
 import 'package:kingsbet_app/app/modules/splash/splash_controller.dart';
 
 class SplashPage extends GetView<SplashController> {
@@ -30,12 +29,6 @@ class SplashPage extends GetView<SplashController> {
                 ),
               ),
             ),
-            KingsbetButton(
-              label: "próximo",
-              onPressed: () {
-                controller.checkLogged();
-              },
-            )
           ],
         ),
       ),

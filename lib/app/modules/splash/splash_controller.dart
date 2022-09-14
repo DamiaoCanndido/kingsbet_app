@@ -7,4 +7,17 @@ class SplashController extends GetxController {
       () => AuthService().init(),
     );
   }
+
+  @override
+  void onReady() {
+    splashDelay();
+    super.onReady();
+  }
+
+  Future<void> splashDelay() async {
+    await Future.delayed(
+      const Duration(seconds: 3),
+      () => checkLogged(),
+    );
+  }
 }

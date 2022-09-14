@@ -59,6 +59,13 @@ class SigninController extends GetxController with MessagesMixin, LoaderMixin {
       storage.write(Constants.USER_TOKEN, userLogged.accessToken);
 
       _loading.toggle();
+      _message(
+        MessageModel(
+          title: "Sucesso",
+          message: "Bem-vindo",
+          type: MessageType.info,
+        ),
+      );
     } on RestClientException catch (e, s) {
       _loading.toggle();
       log("Credenciais inválidas", error: e, stackTrace: s);
