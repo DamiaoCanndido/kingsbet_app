@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:kingsbet_app/app/core/services/auth_service.dart';
+import 'package:kingsbet_app/app/core/ui/widgets/kingsbet_appbar.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -8,16 +7,27 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('HomePage'),
-        actions: [
-          TextButton(
-            onPressed: () {
-              Get.find<AuthService>().logout();
-            },
-            child: const Text("sair"),
+      appBar: KingsbetAppBar(
+        elevation: 0,
+        title: const Text("KINGSBET"),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        items: const [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.shield_outlined),
+            label: "Ligas",
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.shield_rounded),
+            label: "Minhas",
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.exit_to_app),
+            label: "Sair",
           ),
         ],
+        onTap: (value) {},
+        currentIndex: 0,
       ),
       body: Container(),
     );
