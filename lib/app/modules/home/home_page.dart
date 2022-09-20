@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:kingsbet_app/app/core/ui/widgets/kingsbet_appbar.dart';
+import 'package:kingsbet_app/app/modules/home/home_controller.dart';
+import '../../core/constants/constants.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends GetView<HomeController> {
   const HomePage({super.key});
 
   @override
@@ -29,7 +32,11 @@ class HomePage extends StatelessWidget {
         onTap: (value) {},
         currentIndex: 0,
       ),
-      body: Container(),
+      body: Navigator(
+        initialRoute: Constants.LEAGUE,
+        key: Get.nestedKey(HomeController.NAVIGATOR_KEY),
+        onGenerateRoute: controller.onGenerateRouter,
+      ),
     );
   }
 }
