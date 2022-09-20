@@ -14,23 +14,27 @@ class HomePage extends GetView<HomeController> {
         elevation: 0,
         title: const Text("KINGSBET"),
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        items: const [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.shield_outlined),
-            label: "Ligas",
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.shield_rounded),
-            label: "Minhas",
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.exit_to_app),
-            label: "Sair",
-          ),
-        ],
-        onTap: (value) {},
-        currentIndex: 0,
+      bottomNavigationBar: Obx(
+        () => BottomNavigationBar(
+          items: const [
+            BottomNavigationBarItem(
+              icon: Icon(Icons.shield_outlined),
+              label: "Ligas",
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.shield_rounded),
+              label: "Minhas",
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.exit_to_app),
+              label: "Sair",
+            ),
+          ],
+          onTap: (value) {
+            controller.setTabIndex = value;
+          },
+          currentIndex: controller.tabIndex,
+        ),
       ),
       body: Navigator(
         initialRoute: Constants.LEAGUE,
