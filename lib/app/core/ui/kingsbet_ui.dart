@@ -13,7 +13,9 @@ class KingsbetUI {
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
         backgroundColor: const Color(0xFFA40734),
-        textStyle: const TextStyle(fontFamily: 'Uncial Antiqua'),
+        textStyle: const TextStyle(
+          fontFamily: 'Uncial Antiqua',
+        ),
       ),
     ),
     bottomNavigationBarTheme: const BottomNavigationBarThemeData(
