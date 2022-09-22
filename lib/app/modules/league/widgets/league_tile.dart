@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:kingsbet_app/app/models/league_model.dart';
 
 class LeagueTile extends StatelessWidget {
-  const LeagueTile({super.key});
+  final LeagueModel leagueModel;
+
+  const LeagueTile({super.key, required this.leagueModel});
 
   @override
   Widget build(BuildContext context) {
@@ -29,20 +32,20 @@ class LeagueTile extends StatelessWidget {
               height: 50,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: const [
+                children: [
                   Expanded(
                     flex: 2,
                     child: Text(
-                      "LIGA DOS CAMPEÕES DE MERDA",
-                      style: TextStyle(fontSize: 10),
+                      leagueModel.name,
+                      style: const TextStyle(fontSize: 10),
                       overflow: TextOverflow.ellipsis,
                     ),
                   ),
                   Expanded(
                     flex: 1,
                     child: Text(
-                      "02/10/2022 18:00",
-                      style: TextStyle(fontSize: 10),
+                      leagueModel.start!,
+                      style: const TextStyle(fontSize: 10),
                       overflow: TextOverflow.ellipsis,
                     ),
                   )
@@ -54,19 +57,19 @@ class LeagueTile extends StatelessWidget {
               height: 50,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: const [
+                children: [
                   Expanded(
                     flex: 2,
                     child: Text(
-                      "Entrada: Grátis",
-                      style: TextStyle(fontSize: 10),
+                      "Entrada: ${leagueModel.subscription.toString()}",
+                      style: const TextStyle(fontSize: 10),
                     ),
                   ),
                   Expanded(
                     flex: 1,
                     child: Text(
-                      "Jogadores: 3/5",
-                      style: TextStyle(fontSize: 10),
+                      "Jogadores: ${leagueModel.playersAccepted}/${leagueModel.playersAmount}",
+                      style: const TextStyle(fontSize: 10),
                     ),
                   ),
                 ],
