@@ -5,6 +5,7 @@ import 'package:kingsbet_app/app/core/bindings/application_binding.dart';
 import 'package:kingsbet_app/app/core/ui/kingsbet_ui.dart';
 import 'package:kingsbet_app/app/routes/auth_routers.dart';
 import 'package:kingsbet_app/app/routes/home_routers.dart';
+import 'package:kingsbet_app/app/routes/phase_routers.dart';
 import 'package:kingsbet_app/app/routes/splash_routers.dart';
 
 Future<void> main() async {
@@ -26,6 +27,7 @@ class KingsbetMainApp extends StatelessWidget {
         ...SplashRouters.routers,
         ...AuthRouters.routers,
         ...HomeRouters.routers,
+        ...PhaseRouters.routers,
       ],
     );
   }

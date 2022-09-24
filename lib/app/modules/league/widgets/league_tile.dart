@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:intl/intl.dart';
+import 'package:kingsbet_app/app/core/constants/constants.dart';
 import 'package:kingsbet_app/app/models/league_model.dart';
 
 class LeagueTile extends StatelessWidget {
@@ -11,7 +13,7 @@ class LeagueTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        debugPrint("CLIQUE");
+        Get.toNamed(Constants.PHASE, arguments: leagueModel);
       },
       child: Container(
         margin: const EdgeInsets.only(

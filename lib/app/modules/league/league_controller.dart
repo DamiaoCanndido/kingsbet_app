@@ -1,5 +1,4 @@
 import 'dart:developer';
-
 import 'package:get/get.dart';
 import 'package:kingsbet_app/app/core/mixins/loader_mixin.dart';
 import '../../models/league_model.dart';
