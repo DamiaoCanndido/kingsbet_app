@@ -41,4 +41,16 @@ class LeagueController extends GetxController with LoaderMixin {
     final allLeagues = await _leagueRepository.getLeagues();
     leagues.assignAll(allLeagues);
   }
+
+  Future<void> refreshPage() async {
+    try {
+      findAllLeagues();
+    } catch (e, s) {
+      log(
+        'Erro ao buscar ligas',
+        error: e,
+        stackTrace: s,
+      );
+    }
+  }
 }

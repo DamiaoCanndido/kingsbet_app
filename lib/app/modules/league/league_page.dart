@@ -8,14 +8,20 @@ class LeaguePage extends GetView<LeagueController> {
 
   @override
   Widget build(BuildContext context) {
-    return Obx(
-      () => ListView.builder(
-        physics: const BouncingScrollPhysics(),
-        itemCount: controller.leagues.length,
-        itemBuilder: (context, index) {
-          final league = controller.leagues[index];
-          return LeagueTile(
-            leagueModel: league,
+    return Scaffold(
+      body: Obx(
+        () {
+          return RefreshIndicator(
+            onRefresh: controller.refreshPage,
+            child: ListView.builder(
+              itemCount: controller.leagues.length,
+              itemBuilder: (context, index) {
+                final league = controller.leagues[index];
+                return LeagueTile(
+                  leagueModel: league,
+                );
+              },
+            ),
           );
         },
       ),

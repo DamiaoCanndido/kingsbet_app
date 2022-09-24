@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:kingsbet_app/app/models/league_model.dart';
 
 class LeagueTile extends StatelessWidget {
@@ -34,18 +35,20 @@ class LeagueTile extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Expanded(
-                    flex: 2,
+                    flex: 1,
                     child: Text(
                       leagueModel.name,
-                      style: const TextStyle(fontSize: 10),
+                      style: const TextStyle(fontSize: 12),
                       overflow: TextOverflow.ellipsis,
                     ),
                   ),
                   Expanded(
                     flex: 1,
                     child: Text(
-                      leagueModel.start!,
-                      style: const TextStyle(fontSize: 10),
+                      DateFormat('dd-MM-yyyy EEE kk:mm').format(
+                        leagueModel.start!.toLocal(),
+                      ),
+                      style: const TextStyle(fontSize: 12),
                       overflow: TextOverflow.ellipsis,
                     ),
                   )
@@ -59,17 +62,17 @@ class LeagueTile extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Expanded(
-                    flex: 2,
+                    flex: 1,
                     child: Text(
                       "Entrada: ${leagueModel.subscription.toString()}",
-                      style: const TextStyle(fontSize: 10),
+                      style: const TextStyle(fontSize: 12),
                     ),
                   ),
                   Expanded(
                     flex: 1,
                     child: Text(
                       "Jogadores: ${leagueModel.playersAccepted}/${leagueModel.playersAmount}",
-                      style: const TextStyle(fontSize: 10),
+                      style: const TextStyle(fontSize: 12),
                     ),
                   ),
                 ],

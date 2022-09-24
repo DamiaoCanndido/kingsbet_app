@@ -14,7 +14,6 @@ class LeagueModel {
     required this.name,
     required this.playersAmount,
     this.playersAccepted,
-    required this.keysAmount,
     required this.phasesAmount,
     required this.matchesAmount,
     this.subscription,
@@ -26,24 +25,22 @@ class LeagueModel {
   String name;
   int playersAmount;
   int? playersAccepted;
-  int keysAmount;
   int phasesAmount;
   int matchesAmount;
   int? subscription;
   bool? isPrivate;
-  String? start;
+  DateTime? start;
 
   factory LeagueModel.fromMap(Map<String, dynamic> json) => LeagueModel(
         id: json["id"],
         name: json["name"],
         playersAmount: json["playersAmount"],
         playersAccepted: json["playersAccepted"],
-        keysAmount: json["keysAmount"],
         phasesAmount: json["phasesAmount"],
         matchesAmount: json["matchesAmount"],
         subscription: json["subscription"],
         isPrivate: json["isPrivate"],
-        start: json["start"],
+        start: DateTime.parse(json["start"]),
       );
 
   Map<String, dynamic> toMap() => {
@@ -51,11 +48,10 @@ class LeagueModel {
         "name": name,
         "playersAmount": playersAmount,
         "playersAccepted": playersAccepted,
-        "keysAmount": keysAmount,
         "phasesAmount": phasesAmount,
         "matchesAmount": matchesAmount,
         "subscription": subscription,
         "isPrivate": isPrivate,
-        "start": start,
+        "start": start!.toIso8601String(),
       };
 }
