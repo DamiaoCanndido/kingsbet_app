@@ -76,7 +76,6 @@ class SignupController extends GetxController with MessagesMixin, LoaderMixin {
       _loading.toggle();
       await _authRepository.signup(name, email, pw, cPw);
       _loading.toggle();
-      // TODO: voltar no login
 
       _message(
         MessageModel(

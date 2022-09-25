@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:kingsbet_app/app/modules/phase/phase_controller.dart';
+import '../../../models/phase_model.dart';
 
-class PhaseTile extends GetView<PhaseController> {
-  const PhaseTile({super.key});
+class PhaseTile extends StatelessWidget {
+  final PhaseModel phaseModel;
+  const PhaseTile({super.key, required this.phaseModel});
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Text(phaseModel.order.toString());
   }
 }
