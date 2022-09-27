@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:kingsbet_app/app/core/ui/widgets/kingsbet_game.dart';
 import '../../../models/phase_model.dart';
 
 class PhaseTile extends StatelessWidget {
@@ -20,14 +22,17 @@ class PhaseTile extends StatelessWidget {
           height: 50,
           width: double.infinity,
           decoration: const BoxDecoration(
+            color: Colors.white,
             borderRadius: BorderRadius.all(
               Radius.circular(6),
             ),
-            color: Colors.yellow,
           ),
           child: Text(
             "RODADA ${phaseModel.order.toString()}",
             textAlign: TextAlign.left,
+            style: const TextStyle(
+              color: Colors.black,
+            ),
           ),
         ),
         Container(
@@ -41,11 +46,10 @@ class PhaseTile extends StatelessWidget {
             borderRadius: BorderRadius.all(
               Radius.circular(6),
             ),
-            color: Colors.green,
           ),
           child: ListView.builder(
             itemBuilder: (ctx, idx) {
-              return const Text("W");
+              return const KingsbetGame();
             },
             itemCount: 10,
           ),

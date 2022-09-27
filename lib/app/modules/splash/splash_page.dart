@@ -22,7 +22,7 @@ class SplashPage extends GetView<SplashController> {
             ),
             const Align(
               child: Text(
-                "KING´SBET",
+                "KING´SBET 23",
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 30,

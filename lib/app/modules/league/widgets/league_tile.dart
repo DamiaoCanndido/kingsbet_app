@@ -25,7 +25,7 @@ class LeagueTile extends StatelessWidget {
           borderRadius: BorderRadius.all(
             Radius.circular(6),
           ),
-          color: Color.fromARGB(255, 223, 216, 216),
+          color: Colors.white,
         ),
         height: 100,
         child: Column(
