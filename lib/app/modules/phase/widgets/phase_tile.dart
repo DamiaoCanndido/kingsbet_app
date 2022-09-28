@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:kingsbet_app/app/core/ui/widgets/kingsbet_game.dart';
 import '../../../models/phase_model.dart';
 
@@ -49,9 +48,21 @@ class PhaseTile extends StatelessWidget {
           ),
           child: ListView.builder(
             itemBuilder: (ctx, idx) {
-              return const KingsbetGame();
+              return KingsbetGame(
+                homeShield:
+                    "https://upload.wikimedia.org/wikipedia/commons/0/01/Brazil_flag_300.png",
+                awayShield:
+                    "https://upload.wikimedia.org/wikipedia/commons/thumb/f/ff/Flag_of_Serbia.svg/800px-Flag_of_Serbia.svg.png",
+                homeTeam: "BRASIL",
+                awayTeam: "SÉRVIA",
+                stadium: '',
+                start: DateTime.parse("2022-09-24T16:36:29.187Z"),
+                champ: "Copa do mundo",
+                group: "G",
+                round: 1,
+              );
             },
-            itemCount: 10,
+            itemCount: 5,
           ),
         )
       ],
