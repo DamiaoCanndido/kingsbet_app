@@ -6,22 +6,23 @@ class KingsbetGame extends StatelessWidget {
   final String awayShield;
   final String homeTeam;
   final String awayTeam;
+  final int? homeKick;
+  final int? awayKick;
   final String stadium;
   final DateTime start;
   final String? champ;
-  final String? group;
-  final int? round;
-  const KingsbetGame(
-      {super.key,
-      required this.homeShield,
-      required this.awayShield,
-      required this.homeTeam,
-      required this.awayTeam,
-      required this.stadium,
-      required this.start,
-      this.champ,
-      this.group,
-      this.round});
+  const KingsbetGame({
+    super.key,
+    required this.homeShield,
+    required this.awayShield,
+    required this.homeTeam,
+    required this.awayTeam,
+    required this.stadium,
+    required this.start,
+    this.champ,
+    this.homeKick,
+    this.awayKick,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -101,8 +102,18 @@ class KingsbetGame extends StatelessWidget {
                     ),
                     Expanded(
                       flex: 1,
-                      child: Container(),
-                    )
+                      child: Container(
+                        margin: const EdgeInsets.only(
+                          left: 4,
+                          right: 4,
+                        ),
+                        child: homeKick == null || awayKick == null
+                            ? const Text("")
+                            : Text(
+                                "(${homeKick.toString()}):(${awayKick.toString()})",
+                              ),
+                      ),
+                    ),
                   ],
                 ),
                 Expanded(
@@ -144,9 +155,7 @@ class KingsbetGame extends StatelessWidget {
             flex: 1,
             child: Center(
               child: Text(
-                champ == null
-                    ? "amistoso"
-                    : "$champ, Grupo $group, Rodada ${round.toString()}",
+                champ == null ? "amistoso" : "$champ",
                 style: const TextStyle(
                   overflow: TextOverflow.ellipsis,
                 ),
