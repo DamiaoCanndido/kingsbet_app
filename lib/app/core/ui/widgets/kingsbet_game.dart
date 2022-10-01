@@ -100,10 +100,11 @@ class KingsbetGame extends StatelessWidget {
                         flex: 3,
                         child: Container(
                           alignment: Alignment.center,
-                          child: homeKick == null || awayKick == null
+                          child: homeScore == null || awayScore == null
                               ? const Text(":")
                               : Text(
-                                  "(${homeScore.toString()}):(${awayScore.toString()})",
+                                  "${homeScore.toString()}:${awayScore.toString()}",
+                                  style: const TextStyle(fontSize: 25),
                                 ),
                         ),
                       ),
@@ -117,7 +118,7 @@ class KingsbetGame extends StatelessWidget {
                           child: homeKick == null || awayKick == null
                               ? const Text("")
                               : Text(
-                                  "(${homeKick.toString()}):(${awayKick.toString()})",
+                                  "${homeKick.toString()}:${awayKick.toString()}",
                                 ),
                         ),
                       ),
