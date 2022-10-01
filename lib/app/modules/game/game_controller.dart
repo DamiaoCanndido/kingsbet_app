@@ -1,21 +1,21 @@
 import 'dart:developer';
 import 'package:get/get.dart';
 import 'package:kingsbet_app/app/models/league_model.dart';
-import 'package:kingsbet_app/app/models/phase_model.dart';
+import 'package:kingsbet_app/app/models/game_model.dart';
 import '../../core/mixins/loader_mixin.dart';
-import '../../repositories/phase/phase_repository.dart';
+import '../../repositories/game/game_repository.dart';
 
-class PhaseController extends GetxController with LoaderMixin {
+class GameController extends GetxController with LoaderMixin {
   final _leagueModel = Rx<LeagueModel>(Get.arguments);
   LeagueModel get leagueModel => _leagueModel.value;
 
   final _loading = false.obs;
-  final phases = <PhaseModel>[].obs;
+  final games = <GameModel>[].obs;
 
-  final PhaseRepository _phaseRepository;
+  final GameRepository _gameRepository;
 
-  PhaseController({required PhaseRepository phaseRepository})
-      : _phaseRepository = phaseRepository;
+  GameController({required GameRepository gameRepository})
+      : _gameRepository = gameRepository;
 
   @override
   void onInit() {
@@ -27,21 +27,21 @@ class PhaseController extends GetxController with LoaderMixin {
   void onReady() async {
     super.onReady();
     try {
-      findPhasesByLeague();
+      findGamesByLeague();
     } catch (e, s) {
       _loading.toggle();
       log(
-        'Erro ao buscar fases',
+        'Erro ao buscar games',
         error: e,
         stackTrace: s,
       );
     }
   }
 
-  Future<void> findPhasesByLeague() async {
-    final allPhases = await _phaseRepository.getPhasesByLeague(
+  Future<void> findGamesByLeague() async {
+    final allGames = await _gameRepository.getGamesByLeague(
       _leagueModel.value.id!,
     );
-    phases.assignAll(allPhases);
+    games.assignAll(allGames);
   }
 }

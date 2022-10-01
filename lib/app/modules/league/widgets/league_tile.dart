@@ -13,7 +13,7 @@ class LeagueTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        Get.toNamed(Constants.PHASE, arguments: leagueModel);
+        Get.toNamed(Constants.GAME, arguments: leagueModel);
       },
       child: Container(
         margin: const EdgeInsets.only(
