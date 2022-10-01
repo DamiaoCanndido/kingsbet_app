@@ -26,6 +26,7 @@ class GameModel {
     this.groupId,
     this.home,
     this.away,
+    this.champ,
   });
 
   String? id;
@@ -42,8 +43,9 @@ class GameModel {
   int? awayKickScore;
   DateTime? start;
   int? groupId;
-  Away? home;
-  Away? away;
+  Team? home;
+  Team? away;
+  Champ? champ;
 
   factory GameModel.fromMap(Map<String, dynamic> json) => GameModel(
         id: json["id"],
@@ -60,8 +62,9 @@ class GameModel {
         awayKickScore: json["awayKickScore"],
         start: DateTime.parse(json["start"]),
         groupId: json["groupId"],
-        home: Away.fromMap(json["home"]),
-        away: Away.fromMap(json["away"]),
+        home: Team.fromMap(json["home"]),
+        away: Team.fromMap(json["away"]),
+        champ: json["champ"] != null ? Champ.fromMap(json["champ"]) : null,
       );
 
   Map<String, dynamic> toMap() => {
@@ -81,11 +84,12 @@ class GameModel {
         "groupId": groupId,
         "home": home!.toMap(),
         "away": away!.toMap(),
+        "champ": champ!.toMap(),
       };
 }
 
-class Away {
-  Away({
+class Team {
+  Team({
     this.id,
     this.createdAt,
     this.updatedAt,
@@ -109,7 +113,7 @@ class Away {
   String? teamType;
   String? code;
 
-  factory Away.fromMap(Map<String, dynamic> json) => Away(
+  factory Team.fromMap(Map<String, dynamic> json) => Team(
         id: json["id"],
         createdAt: DateTime.parse(json["createdAt"]),
         updatedAt: DateTime.parse(json["updatedAt"]),
@@ -133,5 +137,33 @@ class Away {
         "stadium": stadium,
         "teamType": teamType,
         "code": code,
+      };
+}
+
+Champ champFromMap(String str) => Champ.fromMap(json.decode(str));
+
+String champToMap(Champ data) => json.encode(data.toMap());
+
+class Champ {
+  Champ({
+    this.name,
+    this.country,
+    this.shieldUrl,
+  });
+
+  String? name;
+  String? country;
+  String? shieldUrl;
+
+  factory Champ.fromMap(Map<String, dynamic> json) => Champ(
+        name: json["name"],
+        country: json["country"],
+        shieldUrl: json["shieldUrl"],
+      );
+
+  Map<String, dynamic> toMap() => {
+        "name": name,
+        "country": country,
+        "shieldUrl": shieldUrl,
       };
 }

@@ -16,7 +16,7 @@ class GameTile extends StatelessWidget {
       awayTeam: gameModel.away!.name!,
       stadium: "",
       start: gameModel.start!,
-      champ: "",
+      champ: gameModel.champ?.name,
       homeKick: gameModel.homeScore,
       awayKick: gameModel.awayScore,
     );
