@@ -47,8 +47,8 @@ class LeagueTile extends StatelessWidget {
                   Expanded(
                     flex: 1,
                     child: Text(
-                      DateFormat('dd-MM-yyyy EEE kk:mm').format(
-                        leagueModel.start!.toLocal(),
+                      DateFormat('dd/MM/yyyy EEE kk:mm').format(
+                        leagueModel.start!,
                       ),
                       style: const TextStyle(fontSize: 12),
                       overflow: TextOverflow.ellipsis,

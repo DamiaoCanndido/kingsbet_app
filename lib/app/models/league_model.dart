@@ -18,7 +18,7 @@ class LeagueModel {
     this.subscription,
     this.isPrivate,
     this.start,
-    this.gamesOnLeagues,
+    this.match,
   });
 
   String? id;
@@ -29,7 +29,7 @@ class LeagueModel {
   int? subscription;
   bool? isPrivate;
   DateTime? start;
-  List<GamesOnLeague>? gamesOnLeagues;
+  List<Match>? match;
 
   factory LeagueModel.fromMap(Map<String, dynamic> json) => LeagueModel(
         id: json["id"],
@@ -40,9 +40,9 @@ class LeagueModel {
         subscription: json["subscription"],
         isPrivate: json["isPrivate"],
         start: DateTime.parse(json["start"]),
-        gamesOnLeagues: List<GamesOnLeague>.from(
-          json["gamesOnLeagues"].map(
-            (x) => GamesOnLeague.fromMap(x),
+        match: List<Match>.from(
+          json["match"].map(
+            (x) => Match.fromMap(x),
           ),
         ),
       );
@@ -56,22 +56,22 @@ class LeagueModel {
         "subscription": subscription,
         "isPrivate": isPrivate,
         "start": start!.toIso8601String(),
-        "gamesOnLeagues": List<dynamic>.from(
-          gamesOnLeagues!.map(
+        "match": List<Match>.from(
+          match!.map(
             (x) => x.toMap(),
           ),
         ),
       };
 }
 
-class GamesOnLeague {
-  GamesOnLeague({
+class Match {
+  Match({
     this.game,
   });
 
   Game? game;
 
-  factory GamesOnLeague.fromMap(Map<String, dynamic> json) => GamesOnLeague(
+  factory Match.fromMap(Map<String, dynamic> json) => Match(
         game: Game.fromMap(json["game"]),
       );
 

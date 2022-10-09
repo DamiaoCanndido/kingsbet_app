@@ -49,8 +49,8 @@ class KingsbetGame extends StatelessWidget {
               flex: 1,
               child: Center(
                 child: Text(
-                  "$stadium ${DateFormat('dd-MM-yyyy EEE kk:mm').format(
-                    start.toLocal(),
+                  "$stadium ${DateFormat('dd/MM/yyyy E kk:mm').format(
+                    start,
                   )}",
                   style: const TextStyle(
                     overflow: TextOverflow.ellipsis,

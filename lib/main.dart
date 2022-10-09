@@ -29,6 +29,7 @@ class KingsbetMainApp extends StatelessWidget {
         ...HomeRouters.routers,
         ...GameRouters.routers,
       ],
+      locale: const Locale('pt', 'BR'),
     );
   }
 }
