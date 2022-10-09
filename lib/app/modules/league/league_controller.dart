@@ -13,6 +13,8 @@ class LeagueController extends GetxController with LoaderMixin, MessagesMixin {
   final _message = Rxn<MessageModel>();
   final leagues = <LeagueModel>[].obs;
 
+  // TODO: atualizar número de jogadores em tempo real ao cadastrar
+
   LeagueController({required LeagueRepository leagueRepository})
       : _leagueRepository = leagueRepository;
 
@@ -53,6 +55,11 @@ class LeagueController extends GetxController with LoaderMixin, MessagesMixin {
       ));
     } on RestClientException catch (e, s) {
       _loading.toggle();
+      _message(MessageModel(
+        title: 'Erro',
+        message: e.message,
+        type: MessageType.error,
+      ));
       log(
         e.message,
         error: e,

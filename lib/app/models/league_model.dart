@@ -19,6 +19,7 @@ class LeagueModel {
     this.isPrivate,
     this.start,
     this.match,
+    this.player,
   });
 
   String? id;
@@ -30,6 +31,7 @@ class LeagueModel {
   bool? isPrivate;
   DateTime? start;
   List<Match>? match;
+  List<Player>? player;
 
   factory LeagueModel.fromMap(Map<String, dynamic> json) => LeagueModel(
         id: json["id"],
@@ -45,6 +47,11 @@ class LeagueModel {
             (x) => Match.fromMap(x),
           ),
         ),
+        player: List<Player>.from(
+          json["Player"].map(
+            (x) => Player.fromMap(x),
+          ),
+        ),
       );
 
   Map<String, dynamic> toMap() => {
@@ -58,6 +65,11 @@ class LeagueModel {
         "start": start!.toIso8601String(),
         "match": List<Match>.from(
           match!.map(
+            (x) => x.toMap(),
+          ),
+        ),
+        "Player": List<dynamic>.from(
+          player!.map(
             (x) => x.toMap(),
           ),
         ),
@@ -145,5 +157,45 @@ class Game {
         "awayKickScore": awayKickScore,
         "start": start!.toIso8601String(),
         "groupId": groupId,
+      };
+}
+
+class Player {
+  Player({
+    this.id,
+    this.createdAt,
+    this.updatedAt,
+    this.userId,
+    this.leagueId,
+    this.score,
+    this.isAlive,
+  });
+
+  String? id;
+  DateTime? createdAt;
+  DateTime? updatedAt;
+  String? userId;
+  String? leagueId;
+  int? score;
+  bool? isAlive;
+
+  factory Player.fromMap(Map<String, dynamic> json) => Player(
+        id: json["id"],
+        createdAt: DateTime.parse(json["createdAt"]),
+        updatedAt: DateTime.parse(json["updatedAt"]),
+        userId: json["userId"],
+        leagueId: json["leagueId"],
+        score: json["score"],
+        isAlive: json["isAlive"],
+      );
+
+  Map<String, dynamic> toMap() => {
+        "id": id,
+        "createdAt": createdAt!.toIso8601String(),
+        "updatedAt": updatedAt!.toIso8601String(),
+        "userId": userId,
+        "leagueId": leagueId,
+        "score": score,
+        "isAlive": isAlive,
       };
 }

@@ -67,7 +67,7 @@ class LeagueTile extends GetView<LeagueController> {
                   Expanded(
                     flex: 1,
                     child: Text(
-                      "Jogadores: ${leagueModel.playersAccepted}/${leagueModel.playersAmount}",
+                      "Jogadores: ${leagueModel.player!.length.toString()}/${leagueModel.playersAmount}",
                       style: const TextStyle(fontSize: 12),
                     ),
                   ),

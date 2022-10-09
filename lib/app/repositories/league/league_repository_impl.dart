@@ -48,8 +48,8 @@ class LeagueRepositoryImpl implements LeagueRepository {
         error: response.statusText,
         stackTrace: StackTrace.current,
       );
-      // Get.find<AuthService>().logout();
-      throw RestClientException('Erro ao criar jogador');
+
+      throw RestClientException(response.body["error"]);
     }
 
     return PlayerModel.fromMap(response.body);
