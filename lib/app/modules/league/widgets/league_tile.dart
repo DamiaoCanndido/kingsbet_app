@@ -3,8 +3,9 @@ import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:kingsbet_app/app/core/constants/constants.dart';
 import 'package:kingsbet_app/app/models/league_model.dart';
+import 'package:kingsbet_app/app/modules/league/league_controller.dart';
 
-class LeagueTile extends StatelessWidget {
+class LeagueTile extends GetView<LeagueController> {
   final LeagueModel leagueModel;
 
   const LeagueTile({super.key, required this.leagueModel});
@@ -66,15 +67,20 @@ class LeagueTile extends StatelessWidget {
                   Expanded(
                     flex: 1,
                     child: Text(
-                      "Entrada: ${leagueModel.subscription.toString()}",
+                      "Jogadores: ${leagueModel.playersAccepted}/${leagueModel.playersAmount}",
                       style: const TextStyle(fontSize: 12),
                     ),
                   ),
                   Expanded(
                     flex: 1,
-                    child: Text(
-                      "Jogadores: ${leagueModel.playersAccepted}/${leagueModel.playersAmount}",
-                      style: const TextStyle(fontSize: 12),
+                    child: ElevatedButton(
+                      onPressed: () {
+                        controller.createPlayer(leagueModel.id!);
+                      },
+                      child: Text(
+                        "Entrada: ${leagueModel.subscription.toString()}",
+                        style: const TextStyle(fontSize: 12),
+                      ),
                     ),
                   ),
                 ],

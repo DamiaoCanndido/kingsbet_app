@@ -1,13 +1,16 @@
 import 'dart:developer';
 import 'package:get/get.dart';
 import 'package:kingsbet_app/app/core/mixins/loader_mixin.dart';
+import 'package:kingsbet_app/app/core/mixins/messages_mixin.dart';
+import '../../core/rest_client/rest_client.dart';
 import '../../models/league_model.dart';
 import '../../repositories/league/league_repository.dart';
 
-class LeagueController extends GetxController with LoaderMixin {
+class LeagueController extends GetxController with LoaderMixin, MessagesMixin {
   final LeagueRepository _leagueRepository;
 
   final _loading = false.obs;
+  final _message = Rxn<MessageModel>();
   final leagues = <LeagueModel>[].obs;
 
   LeagueController({required LeagueRepository leagueRepository})
@@ -17,6 +20,7 @@ class LeagueController extends GetxController with LoaderMixin {
   void onInit() {
     super.onInit();
     loaderListener(_loading);
+    messageListener(_message);
   }
 
   @override
@@ -33,6 +37,35 @@ class LeagueController extends GetxController with LoaderMixin {
         error: e,
         stackTrace: s,
       );
+    }
+  }
+
+  Future<void> createPlayer(String leagueId) async {
+    try {
+      _loading.toggle();
+      await _leagueRepository.createPlayer(leagueId);
+      _loading.toggle();
+
+      _message(MessageModel(
+        title: 'Sucesso',
+        message: 'Você foi cadastrado',
+        type: MessageType.info,
+      ));
+    } on RestClientException catch (e, s) {
+      _loading.toggle();
+      log(
+        e.message,
+        error: e,
+        stackTrace: s,
+      );
+    } catch (e, s) {
+      _loading.toggle();
+      log('Erro ao criar jogador', stackTrace: s);
+      _message(MessageModel(
+        title: 'Erro',
+        message: 'Erro ao criar jogador',
+        type: MessageType.error,
+      ));
     }
   }
 
