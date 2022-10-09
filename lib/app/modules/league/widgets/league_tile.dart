@@ -64,6 +64,8 @@ class LeagueTile extends GetView<LeagueController> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
+                  // TODO: Não attualiza em tempo real
+                  /*
                   Expanded(
                     flex: 1,
                     child: Text(
@@ -71,6 +73,7 @@ class LeagueTile extends GetView<LeagueController> {
                       style: const TextStyle(fontSize: 12),
                     ),
                   ),
+                  */
                   Expanded(
                     flex: 1,
                     child: ElevatedButton(

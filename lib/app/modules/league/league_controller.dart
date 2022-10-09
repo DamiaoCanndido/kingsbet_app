@@ -13,8 +13,6 @@ class LeagueController extends GetxController with LoaderMixin, MessagesMixin {
   final _message = Rxn<MessageModel>();
   final leagues = <LeagueModel>[].obs;
 
-  // TODO: atualizar número de jogadores em tempo real ao cadastrar
-
   LeagueController({required LeagueRepository leagueRepository})
       : _leagueRepository = leagueRepository;
 
