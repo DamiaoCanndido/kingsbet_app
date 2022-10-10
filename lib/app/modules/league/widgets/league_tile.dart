@@ -64,7 +64,7 @@ class LeagueTile extends GetView<LeagueController> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  // TODO: Não attualiza em tempo real
+                  // TODO: Não atualiza em tempo real
                   /*
                   Expanded(
                     flex: 1,

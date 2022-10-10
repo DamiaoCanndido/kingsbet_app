@@ -60,7 +60,7 @@ class LeagueController extends GetxController with LoaderMixin, MessagesMixin {
       ));
       log(
         e.message,
-        error: e,
+        error: e.code,
         stackTrace: s,
       );
     } catch (e, s) {

@@ -11,4 +11,5 @@ class Constants {
   static const String LEAGUE_ME = "/league/me";
   static const String LOGOUT = "/logout";
   static const String GAME = "/game";
+  static const String PREDICT = "/predict";
 }

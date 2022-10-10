@@ -13,6 +13,7 @@ class KingsbetGame extends StatelessWidget {
   final String stadium;
   final DateTime start;
   final String? champ;
+  final void Function() onTap;
   const KingsbetGame({
     super.key,
     required this.homeShield,
@@ -21,6 +22,7 @@ class KingsbetGame extends StatelessWidget {
     required this.awayTeam,
     required this.stadium,
     required this.start,
+    required this.onTap,
     this.champ,
     this.homeKick,
     this.awayKick,
@@ -31,9 +33,7 @@ class KingsbetGame extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {
-        debugPrint(homeTeam);
-      },
+      onTap: onTap,
       child: Container(
         margin: const EdgeInsets.all(8),
         height: 120,

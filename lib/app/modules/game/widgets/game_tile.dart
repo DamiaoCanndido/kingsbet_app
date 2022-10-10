@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:kingsbet_app/app/core/ui/widgets/kingsbet_game.dart';
+import '../../../core/constants/constants.dart';
 import '../../../models/game_model.dart';
 
 class GameTile extends StatelessWidget {
@@ -8,8 +10,10 @@ class GameTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // TODO: ExpansionPanelList
     return KingsbetGame(
+      onTap: () {
+        Get.toNamed(Constants.PREDICT, arguments: gameModel);
+      },
       homeShield: gameModel.home!.shieldUrl!,
       awayShield: gameModel.away!.shieldUrl!,
       homeTeam: gameModel.home!.name!,

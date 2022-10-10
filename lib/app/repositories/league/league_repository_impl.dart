@@ -43,8 +43,11 @@ class LeagueRepositoryImpl implements LeagueRepository {
     }, {});
 
     if (response.hasError) {
+      if (response.body["statusCode"] == 401) {
+        Get.find<AuthService>().logout();
+      }
       log(
-        'Erro ao criar jogador ${response.statusCode}',
+        'Erro ao criar jogador ${response.body["statusCode"]}',
         error: response.statusText,
         stackTrace: StackTrace.current,
       );
