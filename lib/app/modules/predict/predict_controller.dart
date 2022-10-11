@@ -26,4 +26,14 @@ class PredictController extends GetxController {
       homePredict(homePredict.value - 1);
     }
   }
+
+  void addAway() {
+    awayPredict(awayPredict.value + 1);
+  }
+
+  void subAway() {
+    if (awayPredict.value > 0) {
+      awayPredict(awayPredict.value - 1);
+    }
+  }
 }

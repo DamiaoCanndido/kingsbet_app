@@ -11,61 +11,123 @@ class PredictPage extends GetView<PredictController> {
       appBar: AppBar(
         title: const Text('PredictPage'),
       ),
-      body: Column(
-        children: [
-          Container(
-            height: 150,
-            child: Row(children: [
-              Expanded(
-                flex: 2,
-                child: Container(
-                  decoration: BoxDecoration(
-                    color: Colors.amber,
-                    image: DecorationImage(
-                      image: NetworkImage(
-                        controller.gameModel.home!.shieldUrl!,
+      body: Container(
+        margin: const EdgeInsets.all(8),
+        height: 300,
+        decoration: const BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.all(
+            Radius.circular(6),
+          ),
+        ),
+        child: Column(
+          children: [
+            Container(
+              height: 150,
+              padding: const EdgeInsets.all(8),
+              child: Row(children: [
+                Expanded(
+                  flex: 1,
+                  child: Container(
+                    decoration: BoxDecoration(
+                      image: DecorationImage(
+                        image: NetworkImage(
+                          controller.gameModel.home!.shieldUrl!,
+                        ),
+                        fit: BoxFit.fitHeight,
+                        alignment: Alignment.center,
                       ),
-                      fit: BoxFit.fitHeight,
-                      alignment: Alignment.center,
                     ),
                   ),
                 ),
-              ),
-              Expanded(
-                flex: 1,
-                child: Container(
-                  color: Colors.orange,
-                  child: const Text("0"),
-                ),
-              )
-            ]),
-          ),
-          Container(
-            height: 150,
-            child: Row(children: [
-              Expanded(
-                flex: 2,
-                child: Container(
-                  decoration: BoxDecoration(
-                    image: DecorationImage(
-                      image: NetworkImage(
-                        controller.gameModel.away!.shieldUrl!,
+                Expanded(
+                  flex: 1,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      ElevatedButton(
+                        onPressed: controller.subHome,
+                        style: ElevatedButton.styleFrom(
+                          shape: const CircleBorder(),
+                        ),
+                        child: const Text("-"),
                       ),
-                      fit: BoxFit.fitHeight,
-                      alignment: Alignment.center,
+                      Container(
+                        child: Obx(
+                          () => Text(
+                            controller.homePredict.value.toString(),
+                            style: const TextStyle(
+                              fontSize: 25,
+                            ),
+                          ),
+                        ),
+                      ),
+                      ElevatedButton(
+                        onPressed: controller.addHome,
+                        style: ElevatedButton.styleFrom(
+                          shape: const CircleBorder(),
+                        ),
+                        child: const Text("+"),
+                      ),
+                    ],
+                  ),
+                )
+              ]),
+            ),
+            Container(
+              height: 150,
+              padding: const EdgeInsets.all(8),
+              child: Row(children: [
+                Expanded(
+                  flex: 1,
+                  child: Container(
+                    decoration: BoxDecoration(
+                      image: DecorationImage(
+                        image: NetworkImage(
+                          controller.gameModel.away!.shieldUrl!,
+                        ),
+                        fit: BoxFit.fitHeight,
+                        alignment: Alignment.center,
+                      ),
                     ),
                   ),
                 ),
-              ),
-              Expanded(
-                flex: 1,
-                child: Container(
-                  child: const Text("0"),
-                ),
-              )
-            ]),
-          ),
-        ],
+                Expanded(
+                  flex: 1,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      ElevatedButton(
+                        onPressed: controller.addAway,
+                        style: ElevatedButton.styleFrom(
+                          shape: const CircleBorder(),
+                        ),
+                        child: const Text("+"),
+                      ),
+                      Container(
+                        child: Obx(
+                          () => Text(
+                            controller.awayPredict.value.toString(),
+                            style: const TextStyle(
+                              fontSize: 25,
+                            ),
+                          ),
+                        ),
+                      ),
+                      ElevatedButton(
+                        onPressed: controller.subAway,
+                        style: ElevatedButton.styleFrom(
+                          shape: const CircleBorder(),
+                        ),
+                        child: const Text("-"),
+                      ),
+                    ],
+                  ),
+                )
+              ]),
+            ),
+          ],
+        ),
       ),
     );
   }
