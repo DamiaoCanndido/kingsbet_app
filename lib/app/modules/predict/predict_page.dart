@@ -13,16 +13,57 @@ class PredictPage extends GetView<PredictController> {
       ),
       body: Column(
         children: [
-          ElevatedButton(
-            onPressed: controller.addHome,
-            child: const Text("+"),
+          Container(
+            height: 150,
+            child: Row(children: [
+              Expanded(
+                flex: 2,
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: Colors.amber,
+                    image: DecorationImage(
+                      image: NetworkImage(
+                        controller.gameModel.home!.shieldUrl!,
+                      ),
+                      fit: BoxFit.fitHeight,
+                      alignment: Alignment.center,
+                    ),
+                  ),
+                ),
+              ),
+              Expanded(
+                flex: 1,
+                child: Container(
+                  color: Colors.orange,
+                  child: const Text("0"),
+                ),
+              )
+            ]),
           ),
-          Obx(
-            () => Text(controller.homePredict.toString()),
-          ),
-          ElevatedButton(
-            onPressed: controller.subHome,
-            child: const Text("-"),
+          Container(
+            height: 150,
+            child: Row(children: [
+              Expanded(
+                flex: 2,
+                child: Container(
+                  decoration: BoxDecoration(
+                    image: DecorationImage(
+                      image: NetworkImage(
+                        controller.gameModel.away!.shieldUrl!,
+                      ),
+                      fit: BoxFit.fitHeight,
+                      alignment: Alignment.center,
+                    ),
+                  ),
+                ),
+              ),
+              Expanded(
+                flex: 1,
+                child: Container(
+                  child: const Text("0"),
+                ),
+              )
+            ]),
           ),
         ],
       ),
