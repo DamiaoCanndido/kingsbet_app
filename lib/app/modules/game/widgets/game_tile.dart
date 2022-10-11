@@ -15,7 +15,10 @@ class GameTile extends GetView<GameController> {
       onTap: () {
         Get.toNamed(
           Constants.PREDICT,
-          arguments: [gameModel, controller.leagueModel.id],
+          arguments: {
+            "gameModel": gameModel,
+            "leagueId": controller.leagueModel.id
+          },
         );
       },
       homeShield: gameModel.home!.shieldUrl!,

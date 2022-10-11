@@ -11,7 +11,21 @@ class PredictPage extends GetView<PredictController> {
       appBar: AppBar(
         title: const Text('PredictPage'),
       ),
-      body: Container(),
+      body: Column(
+        children: [
+          ElevatedButton(
+            onPressed: controller.addHome,
+            child: const Text("+"),
+          ),
+          Obx(
+            () => Text(controller.homePredict.toString()),
+          ),
+          ElevatedButton(
+            onPressed: controller.subHome,
+            child: const Text("-"),
+          ),
+        ],
+      ),
     );
   }
 }
