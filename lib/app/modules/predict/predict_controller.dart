@@ -1,18 +1,17 @@
 import 'dart:developer';
 import 'package:get/get.dart';
-import '../../core/mixins/loader_mixin.dart';
 import '../../core/mixins/messages_mixin.dart';
 import '../../core/rest_client/rest_client.dart';
 import '../../models/game_model.dart';
 import '../../repositories/predict/predict_repository.dart';
 
-class PredictController extends GetxController with LoaderMixin, MessagesMixin {
+class PredictController extends GetxController with MessagesMixin {
   final PredictRepository _predictRepository;
 
   PredictController({required PredictRepository predictRepository})
       : _predictRepository = predictRepository;
 
-  final _loading = false.obs;
+  // final _loading = false.obs;
   final _message = Rxn<MessageModel>();
 
   final _gameModel = Rx<GameModel>(Get.arguments["gameModel"]);
@@ -27,7 +26,6 @@ class PredictController extends GetxController with LoaderMixin, MessagesMixin {
   @override
   void onInit() {
     super.onInit();
-    loaderListener(_loading);
     messageListener(_message);
   }
 
@@ -53,22 +51,21 @@ class PredictController extends GetxController with LoaderMixin, MessagesMixin {
 
   Future<void> createPredict() async {
     try {
-      _loading.toggle();
       await _predictRepository.createPredict(
         leagueId,
         gameModel.id!,
         homePredict.value,
         awayPredict.value,
       );
-      _loading.toggle();
 
+      Get.back();
       _message(MessageModel(
         title: 'Sucesso',
         message: 'Palpite enviado',
         type: MessageType.info,
       ));
     } on RestClientException catch (e, s) {
-      _loading.toggle();
+      Get.back();
       _message(MessageModel(
         title: 'Erro',
         message: e.message,
@@ -80,7 +77,6 @@ class PredictController extends GetxController with LoaderMixin, MessagesMixin {
         stackTrace: s,
       );
     } catch (e, s) {
-      _loading.toggle();
       log('Erro ao criar palpite', stackTrace: s);
       _message(MessageModel(
         title: 'Erro',
