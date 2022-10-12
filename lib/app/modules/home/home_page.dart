@@ -37,7 +37,7 @@ class HomePage extends GetView<HomeController> {
         ),
       ),
       body: Navigator(
-        initialRoute: Constants.LEAGUE_ME,
+        initialRoute: Constants.LEAGUE_NOW,
         key: Get.nestedKey(HomeController.NAVIGATOR_KEY),
         onGenerateRoute: controller.onGenerateRouter,
       ),

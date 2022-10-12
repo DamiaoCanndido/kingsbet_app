@@ -38,6 +38,30 @@ class LeagueRepositoryImpl implements LeagueRepository {
   }
 
   @override
+  Future<List<LeagueModel>> getAvailableLeagues() async {
+    final token = Get.find<AuthService>().getUserAccessToken();
+
+    final response = await _restClient.get(Constants.LEAGUE_NOW, headers: {
+      'Content-Type': 'application/json',
+      'Authorization': "Bearer $token",
+    });
+
+    if (response.hasError) {
+      log(
+        'Erro ao buscar ligas ${response.statusCode}',
+        error: response.statusText,
+        stackTrace: StackTrace.current,
+      );
+      Get.find<AuthService>().logout();
+      throw RestClientException('Erro ao buscar ligas');
+    }
+
+    return response.body
+        .map<LeagueModel>((l) => LeagueModel.fromMap(l))
+        .toList();
+  }
+
+  @override
   Future<PlayerModel> createPlayer(String leagueId) async {
     final token = Get.find<AuthService>().getUserAccessToken();
 

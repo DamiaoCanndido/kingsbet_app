@@ -1,10 +1,10 @@
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
-import 'package:kingsbet_app/app/modules/league_me/widgets/league_me_tile.dart';
-import 'league_me_controller.dart';
+import 'package:kingsbet_app/app/modules/league/widgets/league_tile.dart';
+import 'league_controller.dart';
 
-class LeagueMePage extends GetView<LeagueMeController> {
-  const LeagueMePage({super.key});
+class LeaguePage extends GetView<LeagueController> {
+  const LeaguePage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +17,7 @@ class LeagueMePage extends GetView<LeagueMeController> {
               itemCount: controller.leagues.length,
               itemBuilder: (context, index) {
                 final league = controller.leagues[index];
-                return LeagueMeTile(
+                return LeagueTile(
                   leagueModel: league,
                 );
               },
