@@ -8,6 +8,7 @@ class Constants {
   static const String SIGNIN = "/auth/signin";
   static const String HOME = "/home";
   static const String LEAGUE = "/league";
+  static const String LEAGUE_NOW = "/league/now";
   static const String LEAGUE_ME = "/league/me";
   static const String LOGOUT = "/logout";
   static const String GAME = "/game";

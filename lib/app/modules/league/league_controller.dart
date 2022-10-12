@@ -75,7 +75,7 @@ class LeagueController extends GetxController with LoaderMixin, MessagesMixin {
   }
 
   Future<void> findAllLeagues() async {
-    final allLeagues = await _leagueRepository.getLeagues();
+    final allLeagues = await _leagueRepository.getMyLeagues();
     leagues.assignAll(allLeagues);
   }
 

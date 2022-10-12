@@ -12,7 +12,7 @@ class HomeController extends GetxController {
   final _tabIndex = 0.obs;
   int get tabIndex => _tabIndex.value;
 
-  final _tabs = [Constants.LEAGUE, Constants.LEAGUE_ME, Constants.LOGOUT];
+  final _tabs = [Constants.LEAGUE_ME, Constants.LEAGUE_NOW, Constants.LOGOUT];
 
   set setTabIndex(int index) {
     _tabIndex(index);
@@ -24,7 +24,7 @@ class HomeController extends GetxController {
   }
 
   Route? onGenerateRouter(RouteSettings settings) {
-    if (settings.name == Constants.LEAGUE) {
+    if (settings.name == Constants.LEAGUE_ME) {
       return GetPageRoute(
         settings: settings,
         page: () => const LeaguePage(),
@@ -33,7 +33,7 @@ class HomeController extends GetxController {
       );
     }
 
-    if (settings.name == Constants.LEAGUE_ME) {}
+    if (settings.name == Constants.LEAGUE_NOW) {}
 
     return null;
   }

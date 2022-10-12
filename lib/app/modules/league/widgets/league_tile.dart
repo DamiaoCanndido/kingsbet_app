@@ -58,6 +58,7 @@ class LeagueTile extends GetView<LeagueController> {
                 ],
               ),
             ),
+            /*
             Container(
               padding: const EdgeInsets.all(8),
               height: 50,
@@ -65,7 +66,6 @@ class LeagueTile extends GetView<LeagueController> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   // TODO: Não atualiza em tempo real
-                  /*
                   Expanded(
                     flex: 1,
                     child: Text(
@@ -73,7 +73,6 @@ class LeagueTile extends GetView<LeagueController> {
                       style: const TextStyle(fontSize: 12),
                     ),
                   ),
-                  */
                   Expanded(
                     flex: 1,
                     child: ElevatedButton(
@@ -89,6 +88,7 @@ class LeagueTile extends GetView<LeagueController> {
                 ],
               ),
             ),
+            */
           ],
         ),
       ),

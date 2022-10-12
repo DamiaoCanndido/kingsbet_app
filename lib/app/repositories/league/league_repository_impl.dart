@@ -14,8 +14,13 @@ class LeagueRepositoryImpl implements LeagueRepository {
       : _restClient = restClient;
 
   @override
-  Future<List<LeagueModel>> getLeagues() async {
-    final response = await _restClient.get(Constants.LEAGUE);
+  Future<List<LeagueModel>> getMyLeagues() async {
+    final token = Get.find<AuthService>().getUserAccessToken();
+
+    final response = await _restClient.get(Constants.LEAGUE_ME, headers: {
+      'Content-Type': 'application/json',
+      'Authorization': "Bearer $token",
+    });
 
     if (response.hasError) {
       log(
