@@ -3,12 +3,12 @@ import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:kingsbet_app/app/core/constants/constants.dart';
 import 'package:kingsbet_app/app/models/league_model.dart';
-import 'package:kingsbet_app/app/modules/league/league_controller.dart';
+import 'package:kingsbet_app/app/modules/league_me/league_me_controller.dart';
 
-class LeagueTile extends GetView<LeagueController> {
+class LeagueMeTile extends GetView<LeagueMeController> {
   final LeagueModel leagueModel;
 
-  const LeagueTile({super.key, required this.leagueModel});
+  const LeagueMeTile({super.key, required this.leagueModel});
 
   @override
   Widget build(BuildContext context) {

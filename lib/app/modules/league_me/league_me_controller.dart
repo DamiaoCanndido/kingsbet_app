@@ -6,14 +6,15 @@ import '../../core/rest_client/rest_client.dart';
 import '../../models/league_model.dart';
 import '../../repositories/league/league_repository.dart';
 
-class LeagueController extends GetxController with LoaderMixin, MessagesMixin {
+class LeagueMeController extends GetxController
+    with LoaderMixin, MessagesMixin {
   final LeagueRepository _leagueRepository;
 
   final _loading = false.obs;
   final _message = Rxn<MessageModel>();
   final leagues = <LeagueModel>[].obs;
 
-  LeagueController({required LeagueRepository leagueRepository})
+  LeagueMeController({required LeagueRepository leagueRepository})
       : _leagueRepository = leagueRepository;
 
   @override

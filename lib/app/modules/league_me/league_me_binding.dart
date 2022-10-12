@@ -1,9 +1,9 @@
 import 'package:get/get.dart';
 import 'package:kingsbet_app/app/repositories/league/league_repository.dart';
 import 'package:kingsbet_app/app/repositories/league/league_repository_impl.dart';
-import 'league_controller.dart';
+import 'league_me_controller.dart';
 
-class LeagueBinding implements Bindings {
+class LeagueMeBinding implements Bindings {
   @override
   void dependencies() {
     Get.lazyPut<LeagueRepository>(
@@ -11,8 +11,8 @@ class LeagueBinding implements Bindings {
         restClient: Get.find(),
       ),
     );
-    Get.lazyPut<LeagueController>(
-      () => LeagueController(
+    Get.lazyPut<LeagueMeController>(
+      () => LeagueMeController(
         leagueRepository: Get.find<LeagueRepository>(),
       ),
     );

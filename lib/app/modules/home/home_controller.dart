@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:kingsbet_app/app/core/services/auth_service.dart';
-import 'package:kingsbet_app/app/modules/league/league_binding.dart';
-import 'package:kingsbet_app/app/modules/league/league_page.dart';
-
+import 'package:kingsbet_app/app/modules/league_me/league_me_page.dart';
 import '../../core/constants/constants.dart';
+import '../league_me/league_me_binding.dart';
 
 class HomeController extends GetxController {
   static const NAVIGATOR_KEY = 1;
@@ -28,7 +27,7 @@ class HomeController extends GetxController {
       return GetPageRoute(
         settings: settings,
         page: () => const LeaguePage(),
-        binding: LeagueBinding(),
+        binding: LeagueMeBinding(),
         transition: Transition.fadeIn,
       );
     }
