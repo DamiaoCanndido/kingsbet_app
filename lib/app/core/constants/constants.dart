@@ -13,4 +13,5 @@ class Constants {
   static const String LOGOUT = "/logout";
   static const String GAME = "/game";
   static const String PREDICT = "/predict";
+  static const String TABLE = "/table";
 }

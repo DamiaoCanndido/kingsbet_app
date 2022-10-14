@@ -54,13 +54,11 @@ class PredictPage extends GetView<PredictController> {
                             ),
                             child: const Text("-"),
                           ),
-                          Container(
-                            child: Obx(
-                              () => Text(
-                                controller.homePredict.value.toString(),
-                                style: const TextStyle(
-                                  fontSize: 25,
-                                ),
+                          Obx(
+                            () => Text(
+                              controller.homePredict.value.toString(),
+                              style: const TextStyle(
+                                fontSize: 25,
                               ),
                             ),
                           ),
@@ -106,13 +104,11 @@ class PredictPage extends GetView<PredictController> {
                             ),
                             child: const Text("-"),
                           ),
-                          Container(
-                            child: Obx(
-                              () => Text(
-                                controller.awayPredict.value.toString(),
-                                style: const TextStyle(
-                                  fontSize: 25,
-                                ),
+                          Obx(
+                            () => Text(
+                              controller.awayPredict.value.toString(),
+                              style: const TextStyle(
+                                fontSize: 25,
                               ),
                             ),
                           ),

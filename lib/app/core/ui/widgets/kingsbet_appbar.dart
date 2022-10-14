@@ -8,5 +8,6 @@ class KingsbetAppBar extends AppBar {
     super.backgroundColor,
     super.centerTitle = true,
     super.iconTheme = const IconThemeData(color: Colors.white),
+    super.bottom,
   });
 }

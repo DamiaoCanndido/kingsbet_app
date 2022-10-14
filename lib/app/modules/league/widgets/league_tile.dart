@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
-import 'package:kingsbet_app/app/core/constants/constants.dart';
 import 'package:kingsbet_app/app/models/league_model.dart';
 import 'package:kingsbet_app/app/modules/league_me/league_me_controller.dart';
 
@@ -60,7 +59,6 @@ class LeagueTile extends GetView<LeagueMeController> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                // TODO: Não atualiza em tempo real
                 Expanded(
                   flex: 1,
                   child: Text(

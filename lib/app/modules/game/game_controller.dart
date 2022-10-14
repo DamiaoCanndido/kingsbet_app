@@ -9,6 +9,13 @@ class GameController extends GetxController with LoaderMixin {
   final _leagueModel = Rx<LeagueModel>(Get.arguments);
   LeagueModel get leagueModel => _leagueModel.value;
 
+  final _tabButton = 0.obs;
+  int get tabButton => _tabButton.value;
+
+  void setTabIndexButton(int index) {
+    _tabButton(index);
+  }
+
   final _loading = false.obs;
   final games = <GameModel>[].obs;
 
@@ -39,9 +46,13 @@ class GameController extends GetxController with LoaderMixin {
   }
 
   Future<void> findGamesByLeague() async {
-    final allGames = await _gameRepository.getGamesByLeague(
-      _leagueModel.value.id!,
-    );
-    games.assignAll(allGames);
+    if (_tabButton.value == 0) {
+      final allGames = await _gameRepository.getGamesByLeague(
+        _leagueModel.value.id!,
+      );
+      games.assignAll(allGames);
+    } else {
+      games.assignAll([]);
+    }
   }
 }

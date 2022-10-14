@@ -58,37 +58,6 @@ class LeagueMeTile extends GetView<LeagueMeController> {
                 ],
               ),
             ),
-            /*
-            Container(
-              padding: const EdgeInsets.all(8),
-              height: 50,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  // TODO: Não atualiza em tempo real
-                  Expanded(
-                    flex: 1,
-                    child: Text(
-                      "Jogadores: ${leagueModel.player!.length.toString()}/${leagueModel.playersAmount}",
-                      style: const TextStyle(fontSize: 12),
-                    ),
-                  ),
-                  Expanded(
-                    flex: 1,
-                    child: ElevatedButton(
-                      onPressed: () {
-                        controller.createPlayer(leagueModel.id!);
-                      },
-                      child: Text(
-                        "Entrada: ${leagueModel.subscription.toString()}",
-                        style: const TextStyle(fontSize: 12),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            */
           ],
         ),
       ),
