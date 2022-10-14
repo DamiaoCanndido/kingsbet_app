@@ -46,13 +46,9 @@ class GameController extends GetxController with LoaderMixin {
   }
 
   Future<void> findGamesByLeague() async {
-    if (_tabButton.value == 0) {
-      final allGames = await _gameRepository.getGamesByLeague(
-        _leagueModel.value.id!,
-      );
-      games.assignAll(allGames);
-    } else {
-      games.assignAll([]);
-    }
+    final allGames = await _gameRepository.getGamesByLeague(
+      _leagueModel.value.id!,
+    );
+    games.assignAll(allGames);
   }
 }

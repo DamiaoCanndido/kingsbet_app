@@ -18,33 +18,50 @@ class GamePage extends GetView<GameController> {
         return Column(
           children: [
             Row(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                KingsbetButton(
-                  label: "jogos",
-                  onPressed: () {
-                    controller.setTabIndexButton(0);
-                    controller.findGamesByLeague();
-                  },
-                  color: controller.tabButton == 0 ? Colors.green : Colors.grey,
+                Padding(
+                  padding: const EdgeInsets.all(8),
+                  child: KingsbetButton(
+                    width: Get.width * 0.4,
+                    height: 30,
+                    label: "JOGOS",
+                    onPressed: () {
+                      controller.setTabIndexButton(0);
+                    },
+                    color:
+                        controller.tabButton == 0 ? Colors.green : Colors.grey,
+                  ),
                 ),
-                KingsbetButton(
-                  label: "tabela",
-                  onPressed: () {
-                    controller.setTabIndexButton(1);
-                    controller.findGamesByLeague();
-                  },
-                  color: controller.tabButton == 1 ? Colors.green : Colors.grey,
+                Padding(
+                  padding: const EdgeInsets.all(8),
+                  child: KingsbetButton(
+                    width: Get.width * 0.4,
+                    height: 30,
+                    label: "TABELA",
+                    onPressed: () {
+                      controller.setTabIndexButton(1);
+                    },
+                    color:
+                        controller.tabButton == 1 ? Colors.green : Colors.grey,
+                  ),
                 ),
               ],
             ),
-            ListView.builder(
-              shrinkWrap: true,
-              itemCount: controller.games.length,
-              itemBuilder: (context, index) {
-                final game = controller.games[index];
-                return GameTile(gameModel: game);
-              },
-            ),
+            controller.tabButton == 0
+                ? ListView.builder(
+                    shrinkWrap: true,
+                    itemCount: controller.games.length,
+                    itemBuilder: (context, index) {
+                      final game = controller.games[index];
+                      return GameTile(gameModel: game);
+                    },
+                  )
+                : Container(
+                    width: 100,
+                    height: 100,
+                    color: Colors.black,
+                  ),
           ],
         );
       }),
