@@ -14,6 +14,7 @@ class PredictModel {
     this.playerId,
     this.homePredict,
     this.awayPredict,
+    this.player,
   });
 
   String? id;
@@ -24,6 +25,7 @@ class PredictModel {
   String? playerId;
   int? homePredict;
   int? awayPredict;
+  Player? player;
 
   factory PredictModel.fromJson(String str) =>
       PredictModel.fromMap(json.decode(str));
@@ -39,6 +41,7 @@ class PredictModel {
         playerId: json["playerId"],
         homePredict: json["homePredict"],
         awayPredict: json["awayPredict"],
+        player: Player.fromMap(json["player"]),
       );
 
   Map<String, dynamic> toMap() => {
@@ -50,5 +53,38 @@ class PredictModel {
         "playerId": playerId,
         "homePredict": homePredict,
         "awayPredict": awayPredict,
+        "player": player!.toMap(),
+      };
+}
+
+class Player {
+  Player({
+    this.user,
+  });
+
+  User? user;
+
+  factory Player.fromMap(Map<String, dynamic> json) => Player(
+        user: User.fromMap(json["user"]),
+      );
+
+  Map<String, dynamic> toMap() => {
+        "user": user!.toMap(),
+      };
+}
+
+class User {
+  User({
+    this.name,
+  });
+
+  String? name;
+
+  factory User.fromMap(Map<String, dynamic> json) => User(
+        name: json["name"],
+      );
+
+  Map<String, dynamic> toMap() => {
+        "name": name,
       };
 }

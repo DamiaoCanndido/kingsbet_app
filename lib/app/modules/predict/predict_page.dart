@@ -11,11 +11,11 @@ class PredictPage extends GetView<PredictController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: KingsbetAppBar(),
-      body: Column(
+      body: Stack(
         children: [
           Container(
             margin: const EdgeInsets.all(8),
-            height: 300,
+            height: 266,
             decoration: const BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.all(
@@ -25,7 +25,7 @@ class PredictPage extends GetView<PredictController> {
             child: Column(
               children: [
                 Container(
-                  height: 150,
+                  height: 100,
                   padding: const EdgeInsets.all(8),
                   child: Row(children: [
                     Expanded(
@@ -75,7 +75,7 @@ class PredictPage extends GetView<PredictController> {
                   ]),
                 ),
                 Container(
-                  height: 150,
+                  height: 100,
                   padding: const EdgeInsets.all(8),
                   child: Row(children: [
                     Expanded(
@@ -124,15 +124,29 @@ class PredictPage extends GetView<PredictController> {
                     )
                   ]),
                 ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: KingsbetButton(
+                    label: "ENVIAR",
+                    width: double.infinity,
+                    onPressed: controller.createPredict,
+                  ),
+                ),
               ],
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: KingsbetButton(
-              label: "ENVIAR",
-              width: double.infinity,
-              onPressed: controller.createPredict,
+          Container(
+            margin: const EdgeInsets.only(top: 280),
+            child: ListView.builder(
+              shrinkWrap: true,
+              itemCount: 10,
+              itemBuilder: (context, index) {
+                return Container(
+                  width: 50,
+                  height: 50,
+                  color: Colors.cyanAccent,
+                );
+              },
             ),
           )
         ],

@@ -1,8 +1,10 @@
 import 'dart:developer';
+import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import '../../core/mixins/messages_mixin.dart';
 import '../../core/rest_client/rest_client.dart';
 import '../../models/game_model.dart';
+import '../../models/predict_model.dart';
 import '../../repositories/predict/predict_repository.dart';
 
 class PredictController extends GetxController with MessagesMixin {
@@ -11,7 +13,8 @@ class PredictController extends GetxController with MessagesMixin {
   PredictController({required PredictRepository predictRepository})
       : _predictRepository = predictRepository;
 
-  // final _loading = false.obs;
+  final predicts = <PredictModel>[].obs;
+
   final _message = Rxn<MessageModel>();
 
   final _gameModel = Rx<GameModel>(Get.arguments["gameModel"]);
@@ -27,6 +30,20 @@ class PredictController extends GetxController with MessagesMixin {
   void onInit() {
     super.onInit();
     messageListener(_message);
+  }
+
+  @override
+  void onReady() {
+    super.onReady();
+    try {
+      findPredictsByMatch();
+    } catch (e, s) {
+      log(
+        'Erro ao buscar palpites',
+        error: e,
+        stackTrace: s,
+      );
+    }
   }
 
   void addHome() {
@@ -47,6 +64,14 @@ class PredictController extends GetxController with MessagesMixin {
     if (awayPredict.value > 0) {
       awayPredict(awayPredict.value - 1);
     }
+  }
+
+  Future<void> findPredictsByMatch() async {
+    final allPredicts = await _predictRepository.findPredictByMatch(
+      leagueId,
+      gameModel.id!,
+    );
+    predicts.assignAll(allPredicts);
   }
 
   Future<void> createPredict() async {

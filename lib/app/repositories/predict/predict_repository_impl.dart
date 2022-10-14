@@ -1,4 +1,5 @@
 import 'dart:developer';
+import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:kingsbet_app/app/core/rest_client/rest_client.dart';
 import 'package:kingsbet_app/app/core/services/auth_service.dart';
@@ -45,5 +46,37 @@ class PredictRepositoryImpl implements PredictRepository {
     }
 
     return PredictModel.fromMap(response.body);
+  }
+
+  @override
+  Future<List<PredictModel>> findPredictByMatch(
+    String leagueId,
+    String gameId,
+  ) async {
+    final token = Get.find<AuthService>().getUserAccessToken();
+    final response = await _restClient.get(
+      "${Constants.LEAGUE}/$leagueId${Constants.GAME}/$gameId",
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': "Bearer $token",
+      },
+    );
+
+    if (response.hasError) {
+      if (response.body["statusCode"] == 401) {
+        Get.find<AuthService>().logout();
+      }
+      log(
+        'Erro ao buscar palpites ${response.body["statusCode"]}',
+        error: response.statusText,
+        stackTrace: StackTrace.current,
+      );
+
+      throw RestClientException(response.body["error"]);
+    }
+
+    return response.body
+        .map<PredictModel>((p) => PredictModel.fromMap(p))
+        .toList();
   }
 }
