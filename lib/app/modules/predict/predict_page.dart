@@ -2,6 +2,7 @@ import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:kingsbet_app/app/core/ui/widgets/kingsbet_appbar.dart';
 import 'package:kingsbet_app/app/core/ui/widgets/kingsbet_button.dart';
+import 'package:kingsbet_app/app/modules/predict/widgets/predict_tile.dart';
 import './predict_controller.dart';
 
 class PredictPage extends GetView<PredictController> {
@@ -135,18 +136,17 @@ class PredictPage extends GetView<PredictController> {
               ],
             ),
           ),
-          Container(
-            margin: const EdgeInsets.only(top: 280),
-            child: ListView.builder(
-              shrinkWrap: true,
-              itemCount: 10,
-              itemBuilder: (context, index) {
-                return Container(
-                  width: 50,
-                  height: 50,
-                  color: Colors.cyanAccent,
-                );
-              },
+          Obx(
+            () => Container(
+              margin: const EdgeInsets.only(top: 280),
+              child: ListView.builder(
+                shrinkWrap: true,
+                itemCount: controller.predicts.length,
+                itemBuilder: (context, index) {
+                  final predict = controller.predicts[index];
+                  return PredictTile(predictModel: predict);
+                },
+              ),
             ),
           )
         ],
