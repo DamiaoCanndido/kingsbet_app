@@ -41,7 +41,7 @@ class PredictModel {
         playerId: json["playerId"],
         homePredict: json["homePredict"],
         awayPredict: json["awayPredict"],
-        player: Player.fromMap(json["player"]),
+        player: json["player"] != null ? Player.fromMap(json["player"]) : null,
       );
 
   Map<String, dynamic> toMap() => {

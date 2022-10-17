@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:kingsbet_app/app/models/league_model.dart';
-import 'package:kingsbet_app/app/modules/league_me/league_me_controller.dart';
 
-class LeagueTile extends GetView<LeagueMeController> {
+import '../league_controller.dart';
+
+class LeagueTile extends GetView<LeagueController> {
   final LeagueModel leagueModel;
 
   const LeagueTile({super.key, required this.leagueModel});
