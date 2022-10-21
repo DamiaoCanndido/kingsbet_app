@@ -67,7 +67,18 @@ class GamePage extends GetView<GameController> {
                   )
                 : Container(
                     margin: const EdgeInsets.only(top: 50),
-                    child: const Text("Em breve"),
+                    child: ListView.builder(
+                      shrinkWrap: true,
+                      itemCount: controller.tables.length,
+                      itemBuilder: (context, index) {
+                        final table = controller.tables[index];
+                        return Container(
+                          height: 100,
+                          color: Colors.amber,
+                          child: Text("${table.player} : ${table.points}"),
+                        );
+                      },
+                    ),
                   ),
           ],
         );

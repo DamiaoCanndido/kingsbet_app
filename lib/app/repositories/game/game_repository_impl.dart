@@ -5,6 +5,7 @@ import 'package:kingsbet_app/app/repositories/game/game_repository.dart';
 import '../../core/constants/constants.dart';
 import '../../core/rest_client/rest_client.dart';
 import '../../core/services/auth_service.dart';
+import '../../models/table_model.dart';
 
 class GameRepositoryImpl implements GameRepository {
   final RestClient _restClient;
@@ -27,5 +28,22 @@ class GameRepositoryImpl implements GameRepository {
     }
 
     return response.body.map<GameModel>((p) => GameModel.fromMap(p)).toList();
+  }
+
+  @override
+  Future<List<TableModel>> getTableByLeague(String leagueId) async {
+    final response = await _restClient.get(
+      "${Constants.LEAGUE}/$leagueId/table",
+    );
+    if (response.hasError) {
+      log(
+        'Erro ao buscar ligas ${response.statusCode}',
+        error: response.statusText,
+        stackTrace: StackTrace.current,
+      );
+      Get.find<AuthService>().logout();
+      throw RestClientException('Erro ao carregar tabela');
+    }
+    return response.body.map<TableModel>((t) => TableModel.fromMap(t)).toList();
   }
 }

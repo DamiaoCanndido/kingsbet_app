@@ -72,7 +72,10 @@ class PredictRepositoryImpl implements PredictRepository {
         stackTrace: StackTrace.current,
       );
 
-      throw RestClientException(response.body["error"]);
+      throw RestClientException(
+        response.body["error"],
+        code: response.body["statusCode"],
+      );
     }
 
     return response.body
