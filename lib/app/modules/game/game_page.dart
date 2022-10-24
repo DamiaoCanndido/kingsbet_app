@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:kingsbet_app/app/core/ui/widgets/kingsbet_appbar.dart';
 import 'package:kingsbet_app/app/core/ui/widgets/kingsbet_button.dart';
 import 'package:kingsbet_app/app/modules/game/widgets/game_tile.dart';
+import 'package:kingsbet_app/app/modules/game/widgets/table_tile.dart';
 import 'game_controller.dart';
 
 class GamePage extends GetView<GameController> {
@@ -72,10 +73,9 @@ class GamePage extends GetView<GameController> {
                       itemCount: controller.tables.length,
                       itemBuilder: (context, index) {
                         final table = controller.tables[index];
-                        return Container(
-                          height: 100,
-                          color: Colors.amber,
-                          child: Text("${table.player} : ${table.points}"),
+                        return TableTile(
+                          tableModel: table,
+                          rank: index + 1,
                         );
                       },
                     ),
