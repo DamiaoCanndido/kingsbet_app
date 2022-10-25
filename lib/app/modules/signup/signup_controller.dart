@@ -74,7 +74,12 @@ class SignupController extends GetxController with MessagesMixin, LoaderMixin {
   }) async {
     try {
       _loading.toggle();
-      await _authRepository.signup(name, email, pw, cPw);
+      await _authRepository.signup(
+        name.trim(),
+        email.trim(),
+        pw.trim(),
+        cPw.trim(),
+      );
       _loading.toggle();
 
       _message(

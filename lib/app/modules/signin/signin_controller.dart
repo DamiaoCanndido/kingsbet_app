@@ -53,7 +53,7 @@ class SigninController extends GetxController with MessagesMixin, LoaderMixin {
     try {
       _loading.toggle();
 
-      final userLogged = await _authRepository.signin(email, pw);
+      final userLogged = await _authRepository.signin(email.trim(), pw.trim());
       final storage = GetStorage();
 
       storage.write(Constants.USER_TOKEN, userLogged.accessToken);
