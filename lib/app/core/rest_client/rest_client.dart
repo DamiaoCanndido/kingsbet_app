@@ -1,7 +1,8 @@
 import 'package:get/get.dart';
 
 class RestClient extends GetConnect {
-  final String _backendBaseUrl = "http://192.168.0.4:3333";
+  final String _backendBaseUrl =
+      "https://kingsbet-api-production.up.railway.app";
 
   RestClient() {
     httpClient.baseUrl = _backendBaseUrl;
